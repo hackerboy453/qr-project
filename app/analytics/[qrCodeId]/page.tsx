@@ -58,9 +58,6 @@ export default async function AnalyticsPage({ params }: AnalyticsPageProps) {
   const origin = `${protocol}://${host}`
   const trackingUrl = `${origin}/scan/${analyticsData.qrCode.hash}`
 
-  // Build preview URL that encodes trackingUrl so scans are recorded
-  const previewHref = `/preview?data=${encodeURIComponent(trackingUrl)}&bg=${encodeURIComponent(qrCode.background_color || '#ffffff')}&fg=${encodeURIComponent(qrCode.color || '#000000')}&pattern=${encodeURIComponent(qrCode.data?.patternStyle || 'square')}&eye=${encodeURIComponent(qrCode.data?.eyeStyle || 'square')}&eyeColor=${encodeURIComponent(qrCode.data?.eyeColor || qrCode.color || '#000000')}`
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <div className="max-w-6xl mx-auto">
@@ -89,12 +86,16 @@ export default async function AnalyticsPage({ params }: AnalyticsPageProps) {
               >
                 <ExternalLink className="h-4 w-4" />
               </a>
-              <Link
-                href={previewHref}
-                className="ml-2 text-blue-500 hover:text-blue-700 border px-2 py-1 rounded"
-              >
-                View QR Code
-              </Link>
+              <div className="ml-2 text-center text-sm text-gray-600 max-w-xs">
+                <img
+                  src="https://media.giphy.com/media/9Y5BbDSkSTiY8/giphy.gif"
+                  alt="Sorry"
+                  className="mx-auto mb-2 rounded"
+                  width={120}
+                  height={120}
+                />
+                <p>Sorry! Please download the customized QR at generation time.</p>
+              </div>
             </div>
             <div className="mt-2">
               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
