@@ -67,8 +67,8 @@ export default async function HomePage() {
           <iframe
             width="100%"
             height="100%"
-            src="https://www.youtube.com/watch?v=mpJR09QeaSo"
-            title="Hero (slowed)"
+            src="https://www.youtube.com/embed/mpJR09QeaSo"
+            title="Step by Step guide to generate QR and Analyze Traffic"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
