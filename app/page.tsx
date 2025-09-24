@@ -67,7 +67,7 @@ export default async function HomePage() {
           <iframe
             width="100%"
             height="100%"
-            src="https://www.youtube.com/embed/nytGUnKZX14"
+            src="https://www.youtube.com/watch?v=mpJR09QeaSo"
             title="Hero (slowed)"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
