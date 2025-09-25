@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import Ads from "@/components/ads";
+import Script from "next/script"; // 1. Import the Script component
 
 // Initialize the Inter font for sans-serif text
 const inter = Inter({
@@ -94,6 +95,21 @@ export default function RootLayout({
             })
           }}
         />
+
+        {/* 2. Add the Google Tag scripts here using the Next.js Script component */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17593082211"
+        />
+        <Script id="google-ads-config">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-17593082211');
+          `}
+        </Script>
       </body>
     </html>
   );
