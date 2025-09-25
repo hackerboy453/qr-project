@@ -3,14 +3,15 @@ import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import Ads from "@/components/ads";
-import Script from "next/script";
 
+// Initialize the Inter font for sans-serif text
 const inter = Inter({
   subsets: ["latin"],
   display: 'swap',
   variable: "--font-inter",
 });
 
+// Initialize the Roboto Mono font for monospaced text
 const roboto_mono = Roboto_Mono({
   subsets: ["latin"],
   display: 'swap',
@@ -18,15 +19,16 @@ const roboto_mono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "QR Analytics - Generate and Track QR Codes(100% Free)",
+  title: "QR Analytics - Generate and Track QR Codes",
   description: "Create QR codes and track their performance with detailed analytics",
   generator: 'v0.app',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   alternates: {
     canonical: '/',
   },
+  // Add the icon configuration here
   icons: {
-    icon: '/qr_code.png',
+    icon: '/qr_code.png', // /public path
     shortcut: '/qr_code.png',
     apple: '/qr_code.png',
   },
@@ -43,20 +45,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: '/',
-    title: 'QR Analytics - Generate and Track QR Codes(100% Free)',
+    title: 'QR Analytics - Generate and Track QR Codes',
     description: 'Generate QR codes and track scans, countries, device type, browser, OS and time.',
     siteName: 'QR Analytics',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'QR Analytics - Generate and Track QR Codes(100% Free)',
+    title: 'QR Analytics - Generate and Track QR Codes',
     description: 'Generate QR codes and track scans, countries, device type, browser, OS and time.',
-  },
-  // Add the verification object here for search engines
-  verification: {
-    yandex: 'f7b9834cf84d3aba', // Yandex verification code added here
-    // You can also add Google verification here in the future if needed
-    // google: 'your-google-verification-code',
   },
 };
 
@@ -67,9 +63,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${roboto_mono.variable} antialiased`}>
-      <body>
-        <main>
+      <body className="min-h-screen w-full overflow-x-hidden">
+        <main className="w-full overflow-x-hidden">
           {children}
+          {/* In-flow site-wide banner below content */}
           <Ads />
         </main>
         {/* Organization JSON-LD */}
@@ -97,20 +94,6 @@ export default function RootLayout({
             })
           }}
         />
-        {/* Google Tag scripts */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17593082211"
-        />
-        <Script id="google-ads-config">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'AW-17593082211');
-          `}
-        </Script>
       </body>
     </html>
   );
