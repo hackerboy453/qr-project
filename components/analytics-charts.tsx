@@ -112,9 +112,9 @@ export default function AnalyticsCharts({ data }: { data: AnalyticsData }) {
   const [showAllScans, setShowAllScans] = React.useState(false)
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 w-full">
       {/* Overview Stats */}
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium flex items-center gap-2">
@@ -166,14 +166,14 @@ export default function AnalyticsCharts({ data }: { data: AnalyticsData }) {
       </div>
 
       {/* Charts */}
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
         {/* Scans Over Time */}
         <Card className="md:col-span-2">
           <CardHeader>
             <CardTitle>Scans Over Time</CardTitle>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={260}>
               <BarChart data={dateData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" />
@@ -194,7 +194,7 @@ export default function AnalyticsCharts({ data }: { data: AnalyticsData }) {
             </button>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={260}>
               <BarChart data={showAllCountries ? Object.entries(scansByCountry).map(([country, value]) => ({ name: country, value })) : countryData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
@@ -212,7 +212,7 @@ export default function AnalyticsCharts({ data }: { data: AnalyticsData }) {
             <CardTitle>Device Types</CardTitle>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={260}>
               <PieChart>
                 <Pie
                   data={deviceData}
@@ -220,7 +220,7 @@ export default function AnalyticsCharts({ data }: { data: AnalyticsData }) {
                   cy="50%"
                   labelLine={false}
                   label={({ name, percent }) => `${name} ${((percent as number) * 100).toFixed(0)}%`}
-                  outerRadius={80}
+                  outerRadius={70}
                   fill="#8884d8"
                   dataKey="value"
                 >
@@ -243,7 +243,7 @@ export default function AnalyticsCharts({ data }: { data: AnalyticsData }) {
             </button>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={260}>
               <BarChart data={showAllBrowsers ? Object.entries(scansByBrowser).map(([browser, value]) => ({ name: browser, value })) : browserData} layout="vertical">
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis type="number" />
@@ -264,7 +264,7 @@ export default function AnalyticsCharts({ data }: { data: AnalyticsData }) {
             </button>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={260}>
               <PieChart>
                 <Pie
                   data={showAllOS ? Object.entries(scansByOS).map(([os, value]) => ({ name: os, value })) : osData}
@@ -272,7 +272,7 @@ export default function AnalyticsCharts({ data }: { data: AnalyticsData }) {
                   cy="50%"
                   labelLine={false}
                   label={({ name, percent }) => `${name} ${((percent as number) * 100).toFixed(0)}%`}
-                  outerRadius={80}
+                  outerRadius={70}
                   fill="#8884d8"
                   dataKey="value"
                 >
@@ -295,7 +295,7 @@ export default function AnalyticsCharts({ data }: { data: AnalyticsData }) {
             </button>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3 max-h-80 overflow-y-auto">
+            <div className="space-y-3 max-h-72 overflow-y-auto">
               {showAllScans ? data.scans.map((scan) => (
                 <div key={scan.id} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                   <div className="flex-1">
