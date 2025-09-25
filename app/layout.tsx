@@ -26,6 +26,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  // Add the icon configuration here
+  icons: {
+    icon: '/qr_code.png', // /public path
+    shortcut: '/qr_code.png',
+    apple: '/qr_code.png',
+  },
   keywords: [
     'QR code generator',
     'QR code analytics',
