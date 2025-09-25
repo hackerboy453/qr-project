@@ -3,16 +3,14 @@ import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import Ads from "@/components/ads";
-import Script from "next/script"; // 1. Import the Script component
+import Script from "next/script";
 
-// Initialize the Inter font for sans-serif text
 const inter = Inter({
   subsets: ["latin"],
   display: 'swap',
   variable: "--font-inter",
 });
 
-// Initialize the Roboto Mono font for monospaced text
 const roboto_mono = Roboto_Mono({
   subsets: ["latin"],
   display: 'swap',
@@ -27,9 +25,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  // Add the icon configuration here
   icons: {
-    icon: '/qr_code.png', // /public path
+    icon: '/qr_code.png',
     shortcut: '/qr_code.png',
     apple: '/qr_code.png',
   },
@@ -55,6 +52,12 @@ export const metadata: Metadata = {
     title: 'QR Analytics - Generate and Track QR Codes(100% Free)',
     description: 'Generate QR codes and track scans, countries, device type, browser, OS and time.',
   },
+  // Add the verification object here for search engines
+  verification: {
+    yandex: 'f7b9834cf84d3aba', // Yandex verification code added here
+    // You can also add Google verification here in the future if needed
+    // google: 'your-google-verification-code',
+  },
 };
 
 export default function RootLayout({
@@ -67,7 +70,6 @@ export default function RootLayout({
       <body>
         <main>
           {children}
-          {/* In-flow site-wide banner below content */}
           <Ads />
         </main>
         {/* Organization JSON-LD */}
@@ -95,8 +97,7 @@ export default function RootLayout({
             })
           }}
         />
-
-        {/* 2. Add the Google Tag scripts here using the Next.js Script component */}
+        {/* Google Tag scripts */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-17593082211"
