@@ -19,7 +19,7 @@ const roboto_mono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "QR Analytics - Generate and Track QR Codes",
+  title: "QR Analytics - Generate and Track QR Codes(100% Free)",
   description: "Create QR codes and track their performance with detailed analytics",
   generator: 'v0.app',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: '/',
-    title: 'QR Analytics - Generate and Track QR Codes',
+    title: 'QR Analytics - Generate and Track QR Codes(100% Free)',
     description: 'Generate QR codes and track scans, countries, device type, browser, OS and time.',
     siteName: 'QR Analytics',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'QR Analytics - Generate and Track QR Codes',
+    title: 'QR Analytics - Generate and Track QR Codes(100% Free)',
     description: 'Generate QR codes and track scans, countries, device type, browser, OS and time.',
   },
 };
