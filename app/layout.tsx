@@ -25,6 +25,7 @@ const imageUrl = `${siteUrl}/qr_code.png`;
 
 // ✅ SEO-Enhanced Metadata
 export const metadata: Metadata = {
+  // --- Core Metadata ---
   title: siteTitle,
   description: siteDescription,
   metadataBase: new URL(siteUrl),
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
 
-  // Core
+  // --- SEO Best Practices ---
   applicationName: "QR Analytics Hub",
   keywords: [
     "QR code generator",
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
   creator: "QR Analytics Team",
   publisher: "QR Analytics",
 
-  // Robots
+  // --- Robots Meta Tag for Crawlers ---
   robots: {
     index: true,
     follow: true,
@@ -66,7 +67,7 @@ export const metadata: Metadata = {
     },
   },
 
-  // Open Graph
+  // --- Open Graph (for Facebook, LinkedIn, etc.) ---
   openGraph: {
     type: "website",
     url: siteUrl,
@@ -84,7 +85,7 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
 
-  // Twitter
+  // --- Twitter Card (for Twitter sharing) ---
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
@@ -92,7 +93,7 @@ export const metadata: Metadata = {
     images: [imageUrl],
   },
 
-  // Viewport + Theme
+  // --- Viewport and Theme ---
   viewport: {
     width: "device-width",
     initialScale: 1,
@@ -103,15 +104,12 @@ export const metadata: Metadata = {
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
 
-  // ✅ Icons (for Chrome Tab favicon + iOS/Android PWA)
+  // --- Icons (Favicon for Chrome Tab, iOS, Android) ---
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      { url: "/qr_code.png", sizes: "any" }, // ✅ Tab icon
     ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
+    apple: [{ url: "/qr_code.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
@@ -138,7 +136,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: siteName,
               url: siteUrl,
-              logo: imageUrl,
+              logo: imageUrl, // ✅ Using qr_code.png as logo
             }),
           }}
         />
