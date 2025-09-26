@@ -1,6 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
+import Script from "next/script"; // ✅ Import the Next.js Script component
 import "./globals.css";
 import Ads from "@/components/ads";
 
@@ -123,7 +124,28 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${roboto_mono.variable} antialiased`}
     >
+      {/* ✅ Google Tag Manager - Script (goes in <head>) */}
+      <Script id="google-tag-manager" strategy="afterInteractive">
+        {`
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-PXH5SLS9');
+        `}
+      </Script>
+
       <body>
+        {/* ✅ Google Tag Manager - NoScript (goes immediately after <body>) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PXH5SLS9"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        
         <main>{children}</main>
         <Ads />
 
