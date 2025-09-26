@@ -1,7 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
-import Script from "next/script"; // ✅ Import the Next.js Script component
+import Script from "next/script";
 import "./globals.css";
 import Ads from "@/components/ads";
 
@@ -24,18 +24,13 @@ const siteDescription =
   "Create QR codes and track their performance with detailed analytics. Instantly generate, share, and track QR codes with real-time analytics.";
 const imageUrl = `${siteUrl}/qr_code.png`;
 
-// ✅ SEO-Enhanced Metadata
 export const metadata: Metadata = {
-  // --- Core Metadata ---
   title: siteTitle,
   description: siteDescription,
   metadataBase: new URL(siteUrl),
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   manifest: "/manifest.json",
 
-  // --- SEO Best Practices ---
   applicationName: "QR Analytics Hub",
   keywords: [
     "QR code generator",
@@ -53,11 +48,10 @@ export const metadata: Metadata = {
   creator: "QR Analytics Team",
   publisher: "QR Analytics",
 
-  // --- Robots Meta Tag for Crawlers ---
+  // ✅ Updated Robots Meta Tag (removed nocache)
   robots: {
     index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
       follow: true,
@@ -68,7 +62,6 @@ export const metadata: Metadata = {
     },
   },
 
-  // --- Open Graph (for Facebook, LinkedIn, etc.) ---
   openGraph: {
     type: "website",
     url: siteUrl,
@@ -86,7 +79,6 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
 
-  // --- Twitter Card (for Twitter sharing) ---
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
@@ -94,37 +86,32 @@ export const metadata: Metadata = {
     images: [imageUrl],
   },
 
-  // --- Viewport and Theme ---
   viewport: {
     width: "device-width",
     initialScale: 1,
     maximumScale: 1,
   },
+
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
 
-  // --- Icons (Favicon for Chrome Tab, iOS, Android) ---
   icons: {
-    icon: [
-      { url: "/qr_code.png", sizes: "any" }, // ✅ Tab icon
-    ],
+    icon: [{ url: "/qr_code.png", sizes: "any" }],
     apple: [{ url: "/qr_code.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
       className={`${inter.variable} ${roboto_mono.variable} antialiased`}
     >
-      {/* ✅ Google Tag Manager - Script (goes in <head>) */}
+      {/* Google Tag Manager */}
       <Script id="google-tag-manager" strategy="afterInteractive">
         {`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -136,7 +123,6 @@ export default function RootLayout({
       </Script>
 
       <body>
-        {/* ✅ Google Tag Manager - NoScript (goes immediately after <body>) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-PXH5SLS9"
@@ -145,11 +131,11 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
-        
+
         <main>{children}</main>
         <Ads />
 
-        {/* --- Schema.org JSON-LD --- */}
+        {/* Schema.org JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -158,7 +144,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: siteName,
               url: siteUrl,
-              logo: imageUrl, // ✅ Using qr_code.png as logo
+              logo: imageUrl,
             }),
           }}
         />
