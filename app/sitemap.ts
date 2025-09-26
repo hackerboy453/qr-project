@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.qranalyticshub.space";
 
   return [
@@ -11,8 +11,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1.0,
       images: [
         {
-          loc: `${base}/qr_code.png`, // Image in /public folder
-          title: "QR Code Generate and Analytics(100% free)",
+          loc: `${base}/qr_code.png`,
+          title: "QR Analytics Hub QR Code",
         },
       ],
     },
