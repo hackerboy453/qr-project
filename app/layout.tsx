@@ -1,199 +1,136 @@
 import type React from "react";
-
 import type { Metadata } from "next";
-
 import { Inter, Roboto_Mono } from "next/font/google";
-
 import "./globals.css";
-
 import Ads from "@/components/ads";
 
-
-
-// Initialize the Inter font for sans-serif text
-
 const inter = Inter({
-
-  subsets: ["latin"],
-
-  display: 'swap',
-
-  variable: "--font-inter",
-
+  subsets: ["latin"],
+  display: 'swap',
+  variable: "--font-inter",
 });
-
-
-
-// Initialize the Roboto Mono font for monospaced text
 
 const roboto_mono = Roboto_Mono({
-
-  subsets: ["latin"],
-
-  display: 'swap',
-
-  variable: "--font-roboto-mono",
-
+  subsets: ["latin"],
+  display: 'swap',
+  variable: "--font-roboto-mono",
 });
 
-
-
+// SEO-Enhanced Metadata
 export const metadata: Metadata = {
+  // --- Core Metadata ---
+  title: "QR Analytics - Generate and Track QR Codes (100% Free)",
+  description: "Create QR codes and track their performance with detailed analytics. Instantly generate, share, and track QR codes with real-time analytics.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  alternates: {
+    canonical: '/',
+  },
+  manifest: "/manifest.json",
 
-  title: "QR Analytics - Generate and Track QR Codes(100% free)",
+  // --- SEO Best Practices ---
+  applicationName: 'QR Analytics Hub',
+  keywords: [
+    'QR code generator', 'QR code analytics', 'QR tracking', 'scan analytics',
+    'device type analytics', 'country analytics', 'browser analytics', 'barcode generator',
+    'free qr code generator', 'trackable qr codes'
+  ],
+  authors: [{ name: 'QR Analytics Team', url: process.env.NEXT_PUBLIC_SITE_URL }],
+  creator: 'QR Analytics Team',
+  publisher: 'QR Analytics',
+  
+  // --- Robots Meta Tag for Crawlers ---
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 
-  description: "Create QR codes and track their performance with detailed analytics",
+  // --- Open Graph (for Facebook, LinkedIn, etc.) ---
+  openGraph: {
+    type: 'website',
+    url: '/',
+    title: 'QR Analytics - Generate and Track QR Codes (100% Free)',
+    description: 'Generate QR codes and track scans, countries, device type, browser, OS and time.',
+    siteName: 'QR Analytics',
+    images: [
+      {
+        url: '/icon.png', // Assumes icon.png is your primary sharing image
+        width: 180,
+        height: 180,
+        alt: 'QR Analytics Logo',
+      },
+    ],
+    locale: 'en_US',
+  },
 
-  generator: 'v0.app',
+  // --- Twitter Card (for Twitter sharing) ---
+  twitter: {
+    card: 'summary', // Use 'summary_large_image' if you have a larger banner
+    title: 'QR Analytics - Generate and Track QR Codes (100% Free)',
+    description: 'Generate QR codes and track scans, countries, device type, browser, OS and time.',
+    // creator: '@YourTwitterHandle', // Optional: Add your Twitter handle
+    images: ['/icon.png'],
+  },
 
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-
-  alternates: {
-
-    canonical: '/',
-
-  },
-
-  // Add the icon configuration here
-
-  icons: {
-
-    icon: '/qr_code.png', // /public path
-
-    shortcut: '/qr_code.png',
-
-    apple: '/qr_code.png',
-
-  },
-
-  keywords: [
-
-    'QR code generator',
-
-    'QR code analytics',
-
-    'QR tracking',
-
-    'scan analytics',
-
-    'device type analytics',
-
-    'country analytics',
-
-    'browser analytics',
-
-    'barcode generator'
-
-  ],
-
-  openGraph: {
-
-    type: 'website',
-
-    url: '/',
-
-    title: 'QR Analytics - Generate and Track QR Codes(100% free)',
-
-    description: 'Generate QR codes and track scans, countries, device type, browser, OS and time.',
-
-    siteName: 'QR Analytics',
-
-  },
-
-  twitter: {
-
-    card: 'summary_large_image',
-
-    title: 'QR Analytics - Generate and Track QR Codes(100% free)',
-
-    description: 'Generate QR codes and track scans, countries, device type, browser, OS and time.',
-
-  },
-
+  // --- Viewport and Theme ---
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
 };
 
-
-
 export default function RootLayout({
-
-  children,
-
+  children,
 }: Readonly<{
-
-  children: React.ReactNode;
-
+  children: React.ReactNode;
 }>) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
-  return (
+  return (
+    <html lang="en" className={`${inter.variable} ${roboto_mono.variable} antialiased`}>
+      <body>
+        <main>{children}</main>
+        <Ads />
 
-    <html lang="en" className={`${inter.variable} ${roboto_mono.variable} antialiased`}>
-
-      <body className="min-h-screen w-full overflow-x-hidden">
-
-        <main className="w-full overflow-x-hidden">
-
-          {children}
-
-          {/* In-flow site-wide banner below content */}
-
-          <Ads />
-
-        </main>
-
-        {/* Organization JSON-LD */}
-
-        <script
-
-          type="application/ld+json"
-
-          dangerouslySetInnerHTML={{
-
-            __html: JSON.stringify({
-
-              '@context': 'https://schema.org',
-
-              '@type': 'Organization',
-
-              name: 'QR Analytics',
-
-              url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-
-              logo: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000') + '/placeholder-logo.png'
-
-            })
-
-          }}
-
-        />
-
-        {/* WebSite JSON-LD with search action */}
-
-        <script
-
-          type="application/ld+json"
-
-          dangerouslySetInnerHTML={{
-
-            __html: JSON.stringify({
-
-              '@context': 'https://schema.org',
-
-              '@type': 'WebSite',
-
-              name: 'QR Analytics',
-
-              url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-
-            })
-
-          }}
-
-        />
-
-      </body>
-
-    </html>
-
-  );
-
+        {/* --- Scripts --- */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'QR Analytics',
+              url: siteUrl,
+              logo: `${siteUrl}/icon.png`
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'QR Analytics',
+              url: siteUrl
+            })
+          }}
+        />
+      </body>
+    </html>
+  );
 }
+
