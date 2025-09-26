@@ -26,12 +26,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  // Add the icon configuration here
-  icons: {
-    icon: '/qr_code.png', // /public path
-    shortcut: '/qr_code.png',
-    apple: '/qr_code.png',
-  },
+  // REMOVED: The 'icons' object is no longer needed.
+  // Next.js will automatically find the icon.png file in your /app directory.
   keywords: [
     'QR code generator',
     'QR code analytics',
@@ -61,6 +57,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+
   return (
     <html lang="en" className={`${inter.variable} ${roboto_mono.variable} antialiased`}>
       <body className="min-h-screen w-full overflow-x-hidden">
@@ -77,8 +75,9 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Organization',
               name: 'QR Analytics',
-              url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-              logo: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000') + '/placeholder-logo.png'
+              url: siteUrl,
+              // UPDATED: JSON-LD logo now points to the correct icon file.
+              logo: `${siteUrl}/icon.png` 
             })
           }}
         />
@@ -90,7 +89,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'WebSite',
               name: 'QR Analytics',
-              url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+              url: siteUrl
             })
           }}
         />
