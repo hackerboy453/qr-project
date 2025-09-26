@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'QR Analytics Team', url: process.env.NEXT_PUBLIC_SITE_URL }],
   creator: 'QR Analytics Team',
   publisher: 'QR Analytics',
-  
+
   // --- Robots Meta Tag for Crawlers ---
   robots: {
     index: true,
@@ -62,10 +62,10 @@ export const metadata: Metadata = {
     siteName: 'QR Analytics',
     images: [
       {
-        url: '/icon.png', // Assumes icon.png is your primary sharing image
-        width: 180,
-        height: 180,
-        alt: 'QR Analytics Logo',
+        url: '/qr_code.png', // <<< Updated image path
+        width: 512, // Assuming standard dimensions for a QR code image
+        height: 512,
+        alt: 'QR Analytics QR Code',
       },
     ],
     locale: 'en_US',
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title: 'QR Analytics - Generate and Track QR Codes (100% Free)',
     description: 'Generate QR codes and track scans, countries, device type, browser, OS and time.',
     // creator: '@YourTwitterHandle', // Optional: Add your Twitter handle
-    images: ['/icon.png'],
+    images: ['/qr_code.png'], // <<< Updated image path
   },
 
   // --- Viewport and Theme ---
@@ -114,7 +114,7 @@ export default function RootLayout({
               '@type': 'Organization',
               name: 'QR Analytics',
               url: siteUrl,
-              logo: `${siteUrl}/icon.png`
+              logo: `${siteUrl}/qr_code.png` // <<< Updated logo path
             })
           }}
         />
@@ -133,4 +133,3 @@ export default function RootLayout({
     </html>
   );
 }
-
