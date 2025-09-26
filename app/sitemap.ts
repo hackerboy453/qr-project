@@ -6,19 +6,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${base}/`,
-      lastModified: new Date().toISOString(),
+      lastModified: new Date(), // ISO string will be handled automatically
       changeFrequency: "weekly",
       priority: 1.0,
       images: [
         {
-          loc: `${base}/qr_code.png`,
+          url: `${base}/qr_code.png`, // Use "url" instead of "loc"
           title: "QR Analytics Hub QR Code",
         },
       ],
     },
     {
       url: `${base}/dashboard`,
-      lastModified: new Date().toISOString(),
+      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.6,
     },
