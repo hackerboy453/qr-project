@@ -17,12 +17,54 @@ const roboto_mono = Roboto_Mono({
   variable: "--font-roboto-mono",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-const siteName = "QR Analytics";
-const siteTitle = "QR Analytics - Generate and Track QR Codes (100% Free)";
+// --- SEO Configuration ---
+const siteUrl = "https://www.qranalyticshub.space"; // Your actual domain
+const siteName = "QR Analytics Hub";
+const siteTitle = "Free QR Code Generator with Analytics & Tracking | QR Analytics Hub";
 const siteDescription =
-  "Create QR codes and track their performance with detailed analytics. Instantly generate, share, and track QR codes with real-time analytics.";
+  "Create dynamic, custom QR codes with logos for free. Track scans, location, device, and more with our real-time analytics dashboard. No sign-up required.";
 const imageUrl = `${siteUrl}/qr_code.png`;
+
+// --- Enhanced SEO Keywords ---
+const keywords = [
+  // Core & Primary
+  "qr code generator",
+  "free qr code generator",
+  "qr code analytics",
+  "dynamic qr code",
+  "qr code track",
+  "create qr code",
+  "qr code maker",
+  "barcode scanner",
+  "qr scanner",
+
+  // Features & Functionality
+  "qr code with logo",
+  "custom qr code",
+  "trackable qr codes",
+  "qr code tracking",
+  "scan analytics",
+  "url to qr code",
+  "link to qr code",
+  "vcard qr code",
+  "pdf to qr code",
+  "qr code for website",
+  "qr code for business card",
+
+  // User Intent & Long-Tail
+  "generate qr code for url",
+  "how to track qr code scans",
+  "best free qr code generator",
+  "create qr code online",
+  "free qr code generator no sign up",
+  "qr code generator free online",
+  "dynamic qr code generator",
+  
+  // Related Tools
+  "qr code reader",
+  "qr code scanner online",
+  "barcode generator"
+];
 
 export const metadata: Metadata = {
   title: siteTitle,
@@ -32,23 +74,11 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
 
   applicationName: "QR Analytics Hub",
-  keywords: [
-    "QR code generator",
-    "QR code analytics",
-    "QR tracking",
-    "scan analytics",
-    "device type analytics",
-    "country analytics",
-    "browser analytics",
-    "barcode generator",
-    "free qr code generator",
-    "trackable qr codes",
-  ],
-  authors: [{ name: "QR Analytics Team", url: siteUrl }],
-  creator: "QR Analytics Team",
-  publisher: "QR Analytics",
+  keywords: keywords,
+  authors: [{ name: "QR Analytics Hub Team", url: siteUrl }],
+  creator: "QR Analytics Hub Team",
+  publisher: "QR Analytics Hub",
 
-  // ✅ Updated Robots Meta Tag (removed nocache)
   robots: {
     index: true,
     follow: true,
@@ -73,7 +103,7 @@ export const metadata: Metadata = {
         url: imageUrl,
         width: 512,
         height: 512,
-        alt: "QR Analytics QR Code",
+        alt: "QR Analytics Hub Logo",
       },
     ],
     locale: "en_US",
@@ -135,16 +165,24 @@ export default function RootLayout({
         <main>{children}</main>
         <Ads />
 
-        {/* Schema.org JSON-LD */}
+        {/* --- Enhanced Schema.org JSON-LD --- */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "WebApplication", // More specific type for your service
               name: siteName,
               url: siteUrl,
               logo: imageUrl,
+              description: siteDescription,
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "All", // Web-based
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD",
+              },
             }),
           }}
         />
